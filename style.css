@@ -1180,6 +1180,12 @@ body.ss-nav-hotspots-idle .info-hotspot-modal {
 }
 
 
+/* SKY SURFER CONTENT EDITING v1 — multilingual-friendly sizing */
+#titleBar .sceneName {
+  font-size: clamp(14px, 2.2vw, 22px) !important;
+  unicode-bidi: plaintext;
+}
+
 /* Sky Surfer: Joyful Mysteries-style PHONE title wrapping.
    Desktop stays unchanged. Phone titles use the same readable behavior as the
    Joyful Mysteries project: one centered line when it fits, otherwise a centered
@@ -1239,4 +1245,90 @@ body.ss-nav-hotspots-idle .info-hotspot-modal {
   user-select: none !important;
 }
 #pano img, .ss-scene-preview-image { -webkit-user-drag: none !important; user-drag: none !important; }
+
+
+/* SKY_SURFER_PHONE_LANDSCAPE_FULL_BLEED_V1
+   Keep phone landscape/fullscreen tours centered edge-to-edge. The panorama is
+   allowed to extend beneath display cutout/safe-area regions; only UI controls
+   are inset when the browser reports safe-area values. */
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#pano {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+@media (orientation: landscape) and (pointer: coarse),
+       (orientation: landscape) and (max-height: 500px) {
+  html,
+  body {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+
+  #pano {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+}
+
+@supports (height: 100dvh) {
+  @media (orientation: landscape) and (pointer: coarse),
+         (orientation: landscape) and (max-height: 500px) {
+    html,
+    body,
+    #pano {
+      height: 100dvh !important;
+      min-height: 100dvh !important;
+    }
+  }
+}
+
+/* With viewport-fit=cover the panorama fills the physical landscape screen.
+   Move only the interactive UI inward when a phone reports a cutout/safe area. */
+@supports (left: env(safe-area-inset-left)) {
+  @media (orientation: landscape) and (pointer: coarse),
+         (orientation: landscape) and (max-height: 500px) {
+    .mobile #sceneListToggle {
+      left: env(safe-area-inset-left) !important;
+    }
+
+    .mobile #fullscreenToggle {
+      right: env(safe-area-inset-right) !important;
+    }
+
+    .mobile #autorotateToggle {
+      right: calc(50px + env(safe-area-inset-right)) !important;
+    }
+
+    .mobile #titleBar .sceneName {
+      left: calc(60px + env(safe-area-inset-left)) !important;
+      right: calc(108px + env(safe-area-inset-right)) !important;
+    }
+  }
+}
 
