@@ -1069,7 +1069,7 @@ body.view-control-buttons .viewControlButton {
   left:0 !important;
   right:0 !important;
   width:auto !important;
-  height:50px !important;
+  height:var(--ss-phone-title-bar-height, 50px) !important;
   background:rgba(58,68,84,.80) !important;
   background-color:rgba(58,68,84,.80) !important;
   background-image:none !important;
@@ -1083,9 +1083,9 @@ body.view-control-buttons .viewControlButton {
   right:108px !important;
   width:auto !important;
   max-width:none !important;
-  height:50px !important;
-  min-height:50px !important;
-  line-height:50px !important;
+  height:var(--ss-phone-title-bar-height, 50px) !important;
+  min-height:var(--ss-phone-title-bar-height, 50px) !important;
+  line-height:var(--ss-phone-title-bar-height, 50px) !important;
   margin:0 !important;
   padding:0 6px !important;
   text-indent:0 !important;
@@ -1181,6 +1181,9 @@ body.ss-nav-hotspots-idle .info-hotspot-modal {
 
 
 /* SKY SURFER CONTENT EDITING v1 — multilingual-friendly sizing */
+:root {
+  --ss-phone-title-bar-height: 50px;
+}
 #titleBar .sceneName {
   font-size: clamp(14px, 2.2vw, 22px) !important;
   unicode-bidi: plaintext;
@@ -1192,7 +1195,7 @@ body.ss-nav-hotspots-idle .info-hotspot-modal {
    second line instead of an ellipsis. */
 @media (max-width: 768px) {
   .mobile #titleBar {
-    height: 50px !important;
+    height: var(--ss-phone-title-bar-height, 50px) !important;
   }
 
   .mobile #titleBar .sceneName {
@@ -1208,9 +1211,9 @@ body.ss-nav-hotspots-idle .info-hotspot-modal {
 
     /* Keep the existing left/right control clearance from the generated theme. */
     width: auto !important;
-    height: 50px !important;
-    min-height: 50px !important;
-    max-height: 50px !important;
+    height: var(--ss-phone-title-bar-height, 50px) !important;
+    min-height: var(--ss-phone-title-bar-height, 50px) !important;
+    max-height: var(--ss-phone-title-bar-height, 50px) !important;
     margin: 0 !important;
     padding: 4px 8px !important;
 

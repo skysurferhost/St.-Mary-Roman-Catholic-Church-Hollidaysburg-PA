@@ -559,6 +559,9 @@
     tooltip.classList.add('ss-scene-preview-anchor');
 
     var targetScene = findSceneDataById(hotspot.target);
+    var targetSceneName = targetScene && targetScene.name
+      ? targetScene.name
+      : (hotspot.target || 'Next scene');
 
     var previewCard = document.createElement('div');
     previewCard.classList.add('ss-scene-preview-card');
@@ -569,11 +572,11 @@
     var previewImage = document.createElement('img');
     previewImage.classList.add('ss-scene-preview-image');
     previewImage.src = 'thumbnails/' + hotspot.target + '.jpg';
-    previewImage.alt = targetScene.name;
+    previewImage.alt = targetSceneName;
     previewMedia.appendChild(previewImage);
     var previewTitle = document.createElement('div');
     previewTitle.classList.add('ss-scene-preview-title');
-    previewTitle.textContent = targetScene.name;
+    previewTitle.textContent = targetSceneName;
 
     previewCard.appendChild(previewMedia);
     previewCard.appendChild(previewTitle);
