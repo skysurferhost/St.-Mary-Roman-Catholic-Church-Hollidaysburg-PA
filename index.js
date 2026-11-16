@@ -94,9 +94,11 @@
     var value = 50;
     try {
       var styles = window.getComputedStyle(document.body);
+      var rawUser = parseFloat(styles.getPropertyValue('--ss-phone-title-user-min-height'));
       var rawMin = parseFloat(styles.getPropertyValue('--ss-phone-title-min-height'));
       var rawCurrent = parseFloat(styles.getPropertyValue('--ss-phone-title-height'));
-      if (isFinite(rawMin)) value = rawMin;
+      if (isFinite(rawUser)) value = rawUser;
+      else if (isFinite(rawMin)) value = rawMin;
       else if (isFinite(rawCurrent)) value = rawCurrent;
     } catch (ignore) {}
     value = Math.max(50, Math.min(100, value || 50));
